@@ -1,8 +1,12 @@
 # Meridian
 
+**Live: https://meridian-dusky-one.vercel.app**
+
 A client and CPA tax platform, built from scratch for the AI Engineer case study. It covers all ten challenges as one product rather than ten demos, because most of them are the same problem seen from different angles: challenges 01, 08 and 10 all live on the return review screen, 06 and 07 share a data model, and 04 and 09 are properties of the shell rather than screens.
 
-Run it with `npm install && npm run dev`.
+Run it locally with `npm install && npm run dev`.
+
+Start on the entry page and pick a persona, or jump straight in as a preparer at `/firm`. State lives in `localStorage`, so **Reset the demo** at the bottom of the persona switcher puts everything back.
 
 ## Where each challenge lives
 
