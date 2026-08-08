@@ -45,7 +45,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
       <header className="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md">
         <div className="flex h-12 items-center gap-4 px-4">
-          <Link href={onClientSide ? "/client" : "/firm"} className="flex items-center gap-2">
+          {/* The nav already carries each side's landing page. The mark goes to
+              the entry page, which is otherwise only reachable by resetting. */}
+          <Link href="/" className="flex items-center gap-2">
             <span className="grid h-6 w-6 place-items-center rounded bg-accent text-[13px] font-bold text-white">
               M
             </span>
