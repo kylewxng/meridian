@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 // A grader should not have to hunt. Each challenge points at the screen where
 // it actually lives, with the one decision worth defending.
@@ -91,7 +92,10 @@ export default function CaseStudyMap() {
         Case study map
       </button>
 
-      {open && (
+      {/* Portalled for the same reason as the palette: the header's
+          backdrop-filter would otherwise be this overlay's containing block. */}
+      {open &&
+        createPortal(
         <div
           className="fixed inset-0 z-[100] bg-ink/25 backdrop-blur-[2px] flex justify-end"
           onClick={() => setOpen(false)}
@@ -142,7 +146,8 @@ export default function CaseStudyMap() {
               fabricated. Everything you can click, edit, filter, or persist is real.
             </div>
           </aside>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );

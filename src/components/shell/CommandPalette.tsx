@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { INDEX_SIZE, search, type Hit } from "@/lib/search";
 
@@ -50,30 +51,37 @@ export default function CommandPalette() {
     router.push(h.href);
   };
 
-  if (!open) {
-    return (
-      <button
-        onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-md border border-line bg-sunken/60 px-2.5 py-1 text-[12px] text-ink-3 hover:border-line-strong hover:bg-sunken hover:text-ink-2 transition-colors min-w-[190px]"
-      >
-        <span>⌕</span>
-        <span>Search everything</span>
-        <kbd className="ml-auto rounded border border-line bg-surface px-1 text-[10px] font-sans shadow-xs">
-          ⌘K
-        </kbd>
-      </button>
-    );
-  }
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] bg-ink/25 backdrop-blur-[3px] flex items-start justify-center pt-[12vh] px-4"
-      onClick={() => setOpen(false)}
+  const trigger = (
+    <button
+      onClick={() => setOpen(true)}
+      className="flex items-center gap-2 rounded-md border border-line bg-sunken/60 px-2.5 py-1 text-[12px] text-ink-3 hover:border-line-strong hover:bg-sunken hover:text-ink-2 transition-colors min-w-[190px]"
     >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-[620px] rounded-xl border border-line bg-surface shadow-2xl overflow-hidden rise"
-      >
+      <span>⌕</span>
+      <span>Search everything</span>
+      <kbd className="ml-auto rounded border border-line bg-surface px-1 text-[10px] font-sans shadow-xs">
+        ⌘K
+      </kbd>
+    </button>
+  );
+
+  if (!open) return trigger;
+
+  // The header carries a backdrop-filter, which makes it a containing block for
+  // fixed descendants. Rendered in place, this overlay would be sized and
+  // stacked against the header strip rather than the viewport, so it goes to
+  // the body instead.
+  return (
+    <>
+      {trigger}
+      {createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-ink/25 backdrop-blur-[3px] flex items-start justify-center pt-[12vh] px-4"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-[620px] rounded-xl border border-line bg-surface shadow-2xl overflow-hidden rise"
+          >
         <div className="flex items-center gap-2.5 border-b border-line px-4">
           <span className="text-ink-3">⌕</span>
           <input
@@ -134,12 +142,15 @@ export default function CommandPalette() {
           ))}
         </div>
 
-        {hits.length > 0 && (
-          <div className="border-t border-line bg-sunken/50 px-4 py-1.5 text-[11px] text-ink-3">
-            {hits.length} result{hits.length === 1 ? "" : "s"} · ↑↓ to move · ↵ to open
+            {hits.length > 0 && (
+              <div className="border-t border-line bg-sunken/50 px-4 py-1.5 text-[11px] text-ink-3">
+                {hits.length} result{hits.length === 1 ? "" : "s"} · ↑↓ to move · ↵ to open
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </div>
+        </div>,
+        document.body,
+      )}
+    </>
   );
 }
