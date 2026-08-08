@@ -14,7 +14,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-lg border border-line bg-surface ${pad ? "p-4" : ""} ${className}`}
+      className={`rounded-lg border border-line bg-surface shadow-xs ${pad ? "p-4" : ""} ${className}`}
     >
       {children}
     </div>
@@ -31,10 +31,10 @@ export function SectionTitle({
   sub?: string;
 }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 mb-2.5">
+    <div className="flex items-baseline justify-between gap-4 mb-3">
       <div>
         <h2 className="text-[13px] font-semibold tracking-tight text-ink">{children}</h2>
-        {sub && <p className="text-[12px] text-ink-3 mt-0.5">{sub}</p>}
+        {sub && <p className="text-[12px] leading-snug text-ink-3 mt-1">{sub}</p>}
       </div>
       {right}
     </div>
@@ -62,7 +62,7 @@ export function Badge({
   return (
     <span
       title={title}
-      className={`inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-[11px] font-medium whitespace-nowrap ${TONE[tone]}`}
+      className={`inline-flex items-center gap-1 rounded-md border px-1.75 py-px text-[11px] font-medium leading-[1.45] whitespace-nowrap ${TONE[tone]}`}
     >
       {children}
     </span>
@@ -89,19 +89,23 @@ export function Btn({
   className?: string;
 }) {
   const sizes = {
-    sm: "px-2 py-1 text-[12px]",
+    sm: "px-2.5 py-1 text-[12px]",
     md: "px-3 py-1.5 text-[13px]",
     lg: "px-4 py-2.5 text-[15px]",
   };
+  // Filled controls darken on hover and defined controls lift. Neither uses a
+  // brightness filter, which washes the border out along with the fill.
   const variants = {
     primary:
-      "bg-accent text-white border-accent hover:brightness-110 disabled:bg-ink-3 disabled:border-ink-3",
-    default: "bg-surface text-ink border-line-strong hover:bg-sunken",
+      "bg-accent text-white border-accent shadow-xs hover:bg-accent-hover hover:border-accent-hover active:bg-accent-hover disabled:bg-ink-3 disabled:border-ink-3 disabled:shadow-none",
+    default:
+      "bg-surface text-ink border-line-strong shadow-xs hover:bg-sunken hover:border-ink-3 active:bg-sunken disabled:shadow-none",
     ghost: "bg-transparent text-ink-2 border-transparent hover:bg-sunken hover:text-ink",
-    danger: "bg-surface text-blocked border-blocked-line hover:bg-blocked-soft",
+    danger:
+      "bg-surface text-blocked border-blocked-line shadow-xs hover:bg-blocked-soft hover:border-blocked",
   };
-  const cls = `inline-flex items-center justify-center gap-1.5 rounded-md border font-medium transition-all duration-150 ${sizes[size]} ${variants[variant]} ${
-    disabled ? "opacity-50 cursor-not-allowed" : ""
+  const cls = `inline-flex items-center justify-center gap-1.5 rounded-md border font-medium transition-colors duration-150 ${sizes[size]} ${variants[variant]} ${
+    disabled ? "opacity-55 cursor-not-allowed" : ""
   } ${className}`;
 
   if (href && !disabled) {
@@ -142,7 +146,7 @@ export function GatedBtn({
 
 export function Empty({ title, sub }: { title: string; sub?: string }) {
   return (
-    <div className="rounded-lg border border-dashed border-line px-4 py-10 text-center">
+    <div className="rounded-lg border border-dashed border-line-strong bg-sunken/40 px-4 py-10 text-center">
       <p className="text-[13px] font-medium text-ink-2">{title}</p>
       {sub && <p className="text-[12px] text-ink-3 mt-1">{sub}</p>}
     </div>

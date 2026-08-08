@@ -41,7 +41,7 @@ export default function StageRail({
           return (
             <li key={s.key} className="min-w-0 flex-1">
               <div
-                className={`h-1 rounded-full ${
+                className={`h-1.5 rounded-full ${
                   done ? "bg-done" : now ? "bg-accent" : "bg-line"
                 }`}
               />

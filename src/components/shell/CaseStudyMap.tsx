@@ -98,7 +98,7 @@ export default function CaseStudyMap() {
         >
           <aside
             onClick={(e) => e.stopPropagation()}
-            className="w-[440px] max-w-full h-full overflow-y-auto border-l border-line bg-surface sheet-in"
+            className="w-[440px] max-w-full h-full overflow-y-auto border-l border-line bg-surface shadow-2xl sheet-in"
           >
             <div className="sticky top-0 flex items-start justify-between gap-3 border-b border-line bg-surface px-5 py-3.5">
               <div>

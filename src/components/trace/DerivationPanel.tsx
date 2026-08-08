@@ -18,7 +18,7 @@ export default function DerivationPanel({
   onSource: (s: SourceRef) => void;
 }) {
   return (
-    <div className="rounded-lg border border-line bg-surface overflow-hidden">
+    <div className="rounded-lg border border-line bg-surface shadow-xs overflow-hidden">
       <div className="border-b border-line px-3 py-2">
         <h3 className="text-[12px] font-semibold text-ink">How this number was reached</h3>
         <p className="text-[11px] text-ink-3">

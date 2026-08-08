@@ -31,7 +31,7 @@ export default function RelatedRail({
   if (!items.length) return null;
 
   return (
-    <div className="rounded-lg border border-line bg-surface">
+    <div className="rounded-lg border border-line bg-surface shadow-xs">
       <div className="border-b border-line px-3 py-2">
         <h3 className="text-[12px] font-semibold text-ink">{title}</h3>
         <p className="text-[11px] text-ink-3">

@@ -30,11 +30,11 @@ export default function Entry() {
           <button
             key={p.id}
             onClick={() => go(p.id)}
-            className="group rounded-lg border border-line bg-surface p-4 text-left transition-all hover:border-accent-line hover:bg-accent-soft/30"
+            className="group rounded-xl border border-line bg-surface p-4 text-left shadow-xs transition-all hover:border-accent-line hover:bg-accent-soft/30 hover:shadow-md"
           >
             <div className="flex items-center gap-2.5">
               <span
-                className={`grid h-8 w-8 place-items-center rounded text-[12px] font-semibold text-white ${
+                className={`grid h-8 w-8 place-items-center rounded-lg text-[12px] font-semibold text-white shadow-xs ring-1 ring-inset ring-white/15 ${
                   p.side === "firm" ? "bg-accent" : "bg-ink"
                 }`}
               >
@@ -53,7 +53,7 @@ export default function Entry() {
         ))}
       </div>
 
-      <div className="mt-8 rounded-lg border border-line bg-surface p-4">
+      <div className="mt-8 rounded-xl border border-line bg-surface p-4 shadow-xs">
         <p className="text-[12.5px] font-semibold text-ink">What is behind this</p>
         <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
           {RETURNS.length} returns, {DOCUMENTS.length.toLocaleString()} documents, and{" "}

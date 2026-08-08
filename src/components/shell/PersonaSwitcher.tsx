@@ -32,10 +32,10 @@ export default function PersonaSwitcher() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-2 rounded-md border border-line-strong bg-surface pl-1.5 pr-2 py-1 hover:bg-sunken transition-colors"
+        className="flex items-center gap-2 rounded-md border border-line-strong bg-surface pl-1.5 pr-2 py-1 shadow-xs hover:bg-sunken hover:border-ink-3 transition-colors"
       >
         <span
-          className={`grid h-6 w-6 place-items-center rounded text-[11px] font-semibold text-white ${
+          className={`grid h-6 w-6 place-items-center rounded-[5px] text-[11px] font-semibold text-white ring-1 ring-inset ring-white/15 ${
             me.side === "firm" ? "bg-accent" : "bg-ink"
           }`}
         >
@@ -51,7 +51,7 @@ export default function PersonaSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1.5 w-[336px] rounded-lg border border-line bg-surface shadow-xl shadow-black/[0.07] z-50 rise overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-[336px] rounded-xl border border-line bg-surface shadow-xl z-50 rise overflow-hidden">
           <div className="px-3 py-2 border-b border-line bg-sunken/60">
             <p className="text-[11px] font-semibold text-ink">Switch who you are</p>
             <p className="text-[11px] text-ink-3 mt-0.5">

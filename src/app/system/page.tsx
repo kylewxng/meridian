@@ -51,7 +51,7 @@ export default function SystemPage() {
         </SectionTitle>
         <table className="w-full">
           <thead>
-            <tr className="border-b border-line text-[11px] uppercase tracking-wide text-ink-3">
+            <tr className="border-b border-line bg-sunken/60 text-[11px] uppercase tracking-[0.05em] text-ink-3">
               <th className="py-1.5 text-left font-medium">State</th>
               <th className="py-1.5 text-left font-medium">Looks like</th>
               <th className="py-1.5 text-left font-medium">Means</th>

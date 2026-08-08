@@ -123,7 +123,7 @@ export default function ReviewPage({ params }: { params: Promise<{ id: string }>
 
         {grouped.map((g) => (
           <div key={g.schedule}>
-            <p className="sticky top-[52px] z-[5] border-y border-line bg-sunken px-3 py-1 text-[10.5px] font-semibold uppercase tracking-wide text-ink-2">
+            <p className="sticky top-[52px] z-[5] border-y border-line bg-sunken px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-ink-2">
               {g.schedule}
             </p>
             {g.rows.map((f) => {
@@ -135,8 +135,10 @@ export default function ReviewPage({ params }: { params: Promise<{ id: string }>
                 <button
                   key={f.id}
                   onClick={() => pickField(f)}
-                  className={`flex w-full items-center gap-2 border-b border-line px-3 py-2 text-left transition-colors ${
-                    active ? "bg-accent-soft" : "hover:bg-sunken"
+                  className={`flex w-full items-center gap-2 border-b border-line py-2 pr-3 text-left transition-colors ${
+                    active
+                      ? "border-l-2 border-l-accent bg-accent-soft pl-2.5"
+                      : "pl-3 hover:bg-sunken/70"
                   }`}
                 >
                   <span className="w-8 shrink-0 font-mono text-[11px] text-ink-3">{f.line}</span>
@@ -161,7 +163,7 @@ export default function ReviewPage({ params }: { params: Promise<{ id: string }>
 
       {/* Middle: the evidence for the selected line */}
       <section className="w-[400px] shrink-0 overflow-y-auto bg-canvas p-3 space-y-3">
-        <div className="rounded-lg border border-line bg-surface p-3">
+        <div className="rounded-lg border border-line bg-surface p-3 shadow-xs">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[11px] text-ink-3">

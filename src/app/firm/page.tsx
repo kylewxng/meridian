@@ -155,7 +155,8 @@ export default function FirmDashboard() {
 
 function NextUp({ r }: { r: Ranked }) {
   return (
-    <div className="rounded-lg border border-accent-line bg-accent-soft/50 p-4">
+    <div className="relative overflow-hidden rounded-lg border border-accent-line bg-accent-soft/60 p-4 pl-4.75 shadow-xs">
+      <span className="absolute inset-y-0 left-0 w-1 bg-accent" aria-hidden />
       <div className="flex items-start gap-4">
         <div className="min-w-0 flex-1">
           <p className="text-[11px] font-semibold uppercase tracking-wide text-accent">
@@ -186,8 +187,8 @@ function Stat({ n, label, tone }: { n: number; label: string; tone: "blocked" | 
   const c = { blocked: "text-blocked", caution: "text-caution", accent: "text-accent" }[tone];
   return (
     <Card>
-      <p className={`tnum text-[26px] font-semibold leading-none ${c}`}>{n}</p>
-      <p className="mt-1 text-[12.5px] text-ink-2">{label}</p>
+      <p className={`tnum text-[26px] font-semibold leading-none tracking-[-0.03em] ${c}`}>{n}</p>
+      <p className="mt-1.5 text-[12.5px] text-ink-2">{label}</p>
     </Card>
   );
 }
@@ -199,9 +200,9 @@ function QueueRow({ r, n }: { r: Ranked; n: number }) {
     <li className="border-b border-line last:border-0">
       <Link
         href={`/firm/returns/${r.ret.id}`}
-        className="flex items-center gap-3 px-4 py-2 hover:bg-sunken transition-colors"
+        className="flex items-center gap-3 px-4 py-2.5 hover:bg-sunken/70 transition-colors"
       >
-        <span className="tnum w-5 shrink-0 text-right text-[11px] text-ink-3">{n}</span>
+        <span className="tnum w-5 shrink-0 text-right text-[11px] tabular-nums text-ink-3">{n}</span>
         <span className={`h-7 w-1 shrink-0 rounded-full ${tone}`} />
         <span className="w-52 shrink-0 min-w-0">
           <span className="block truncate text-[13px] font-medium text-ink">

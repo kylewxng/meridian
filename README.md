@@ -33,7 +33,7 @@ Four got the deepest investment: 01 and 10, which together answer "why should I 
 
 - All UI state and persistence. Editing a figure, accepting or correcting an AI suggestion, answering a question, sending a message, resolving a thread, and completing a task all persist to `localStorage` and survive navigation and refresh.
 - The priority ranking in `src/lib/priority.ts`. Genuine scoring over 242 returns weighing deadline proximity, how long something has been blocked, review age, whether the client just replied, low-confidence field count, and dollars at stake. Each term that fires also pushes a sentence into `reasons`, which is why every dashboard row can explain its own rank.
-- Search, filtering, and faceting. The ⌘K palette indexes about 700 objects across seven types and searches them together.
+- Search, filtering, and faceting. The ⌘K palette indexes 676 objects across seven types and searches them together.
 - The permission model in `src/lib/permissions.ts`. A real capability matrix across six roles, enforced at the route level and not only in the navigation. A client who pastes a `/firm` URL is refused.
 - Deep linking. Panel state lives in the URL, so `/firm/returns/r-0002/review?field=f1040.line7&doc=d-1099b-vantage&page=3&region=noncovered-block` restores the exact field, document, page, and highlight after a refresh.
 - The traceability graph. Every field states its sources, the transform steps applied, and the resulting value.

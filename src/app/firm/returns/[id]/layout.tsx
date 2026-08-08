@@ -74,10 +74,10 @@ export default function ReturnLayout({
               <Link
                 key={t.seg}
                 href={href}
-                className={`rounded-t px-3 py-1.5 text-[13px] border-b-2 transition-colors ${
+                className={`-mb-px rounded-t-md px-3 py-1.5 text-[12.5px] border-b-2 transition-colors ${
                   active
-                    ? "border-accent font-medium text-ink"
-                    : "border-transparent text-ink-2 hover:bg-sunken hover:text-ink"
+                    ? "border-accent font-semibold text-ink"
+                    : "border-transparent text-ink-2 hover:border-line-strong hover:text-ink"
                 }`}
               >
                 {t.label}

@@ -54,11 +54,11 @@ export default function CommandPalette() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-md border border-line bg-sunken/70 px-2.5 py-1 text-[12px] text-ink-3 hover:bg-sunken hover:text-ink-2 transition-colors min-w-[190px]"
+        className="flex items-center gap-2 rounded-md border border-line bg-sunken/60 px-2.5 py-1 text-[12px] text-ink-3 hover:border-line-strong hover:bg-sunken hover:text-ink-2 transition-colors min-w-[190px]"
       >
         <span>⌕</span>
         <span>Search everything</span>
-        <kbd className="ml-auto rounded border border-line bg-surface px-1 text-[10px] font-sans">
+        <kbd className="ml-auto rounded border border-line bg-surface px-1 text-[10px] font-sans shadow-xs">
           ⌘K
         </kbd>
       </button>
@@ -67,12 +67,12 @@ export default function CommandPalette() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-ink/20 backdrop-blur-[2px] flex items-start justify-center pt-[12vh] px-4"
+      className="fixed inset-0 z-[100] bg-ink/25 backdrop-blur-[3px] flex items-start justify-center pt-[12vh] px-4"
       onClick={() => setOpen(false)}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-[620px] rounded-xl border border-line bg-surface shadow-2xl shadow-black/20 overflow-hidden rise"
+        className="w-full max-w-[620px] rounded-xl border border-line bg-surface shadow-2xl overflow-hidden rise"
       >
         <div className="flex items-center gap-2.5 border-b border-line px-4">
           <span className="text-ink-3">⌕</span>

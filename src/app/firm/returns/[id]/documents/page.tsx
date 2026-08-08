@@ -262,9 +262,9 @@ function FacetRow({
   return (
     <button
       onClick={onClick}
-      className={`w-full rounded px-2 py-1 text-left text-[12.5px] transition-colors ${
+      className={`w-full rounded-md px-2 py-1 text-left text-[12.5px] transition-colors ${
         cap ? "first-letter:uppercase" : ""
-      } ${active ? "bg-accent-soft font-medium text-accent" : "text-ink-2 hover:bg-sunken"}`}
+      } ${active ? "bg-accent-soft font-medium text-accent ring-1 ring-accent-line" : "text-ink-2 hover:bg-sunken"}`}
     >
       {label}
       <span className="float-right tnum text-[11px] text-ink-3">{count}</span>

@@ -101,7 +101,7 @@ export default function AiCard({
 
   return (
     <div
-      className={`rounded-lg border bg-surface overflow-hidden ${
+      className={`rounded-lg border bg-surface shadow-xs overflow-hidden ${
         status === "open" ? "border-ai-line" : "border-line"
       }`}
     >

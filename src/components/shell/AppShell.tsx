@@ -43,16 +43,20 @@ export default function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen flex flex-col">
       {context === "personal" && <PersonalContextBanner />}
 
-      <header className="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md">
-        <div className="flex h-12 items-center gap-4 px-4">
+      <header className="sticky top-0 z-40 border-b border-line bg-surface/80 shadow-xs backdrop-blur-xl backdrop-saturate-150">
+        <div className="flex h-12 items-center gap-3 px-4">
           {/* The nav already carries each side's landing page. The mark goes to
               the entry page, which is otherwise only reachable by resetting. */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="grid h-6 w-6 place-items-center rounded bg-accent text-[13px] font-bold text-white">
+          <Link href="/" className="group flex items-center gap-2">
+            <span className="grid h-[22px] w-[22px] place-items-center rounded-[5px] bg-accent text-[12px] font-bold text-white shadow-xs ring-1 ring-inset ring-white/15">
               M
             </span>
-            <span className="text-[14px] font-semibold tracking-tight">Meridian</span>
+            <span className="text-[13.5px] font-semibold tracking-[-0.02em] text-ink">
+              Meridian
+            </span>
           </Link>
+
+          <span className="h-4 w-px bg-line" aria-hidden />
 
           <nav className="flex items-center gap-0.5">
             {nav.map((n) => {
@@ -64,10 +68,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
                 <Link
                   key={n.href}
                   href={n.href}
-                  className={`rounded px-2.5 py-1 text-[13px] transition-colors ${
+                  className={`rounded-md px-2.5 py-1 text-[12.5px] transition-colors ${
                     active
-                      ? "bg-sunken font-medium text-ink"
-                      : "text-ink-2 hover:bg-sunken hover:text-ink"
+                      ? "bg-sunken font-medium text-ink shadow-xs ring-1 ring-line"
+                      : "text-ink-2 hover:bg-sunken/70 hover:text-ink"
                   }`}
                 >
                   {n.label}
@@ -130,7 +134,7 @@ function WorkflowPill() {
   if (pathname === top.href.split("?")[0] && !top.href.includes("?")) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 z-40 flex items-center gap-1.5 rounded-full border border-line bg-surface pl-1 pr-1 py-1 shadow-lg shadow-black/10 rise">
+    <div className="fixed bottom-4 left-4 z-40 flex items-center gap-1.5 rounded-full border border-line bg-surface pl-1 pr-1 py-1 shadow-lg rise">
       <button
         onClick={() => {
           popWorkflow();

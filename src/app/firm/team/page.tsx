@@ -44,7 +44,7 @@ export default function TeamPage() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-line text-[11px] uppercase tracking-wide text-ink-3">
+              <tr className="border-b border-line bg-sunken/60 text-[11px] uppercase tracking-[0.05em] text-ink-3">
                 <th className="px-4 py-1.5 text-left font-medium">Role</th>
                 {CAPS.map((c) => (
                   <th key={c.cap} className="px-2 py-1.5 text-center font-medium">

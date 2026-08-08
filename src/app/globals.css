@@ -1,38 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #fbfbfd;
+  /* Surfaces run cool and slightly deeper than white so that cards, which are
+     pure white, read as raised without needing a heavy border. */
+  --color-canvas: #f6f7f9;
   --color-surface: #ffffff;
-  --color-sunken: #f4f5f8;
-  --color-line: #e4e7ec;
-  --color-line-strong: #d3d8e0;
+  --color-sunken: #f1f3f6;
+  --color-line: #e3e7ed;
+  --color-line-strong: #cbd2dc;
 
-  --color-ink: #12151a;
-  --color-ink-2: #5b6472;
-  --color-ink-3: #8a93a0;
+  /* Ink carries a trace of navy. Neutral grey at 13px reads washed out against
+     a cool canvas; this ramp holds contrast at small sizes. */
+  --color-ink: #101828;
+  --color-ink-2: #4a5567;
+  --color-ink-3: #79839a;
 
   --color-accent: #0e6e6e;
-  --color-accent-soft: #e6f2f2;
-  --color-accent-line: #b7dcdc;
+  --color-accent-hover: #0b5a5a;
+  --color-accent-soft: #e4f1f1;
+  --color-accent-line: #a9d5d5;
 
-  --color-ai: #6b4ee6;
-  --color-ai-soft: #f1edfd;
-  --color-ai-line: #d5c9f8;
+  --color-ai: #6338d6;
+  --color-ai-soft: #f0ecfd;
+  --color-ai-line: #cfc2f6;
 
-  --color-caution: #b7791f;
-  --color-caution-soft: #fdf6e7;
-  --color-caution-line: #f0dcb0;
+  --color-caution: #a86a12;
+  --color-caution-soft: #fdf5e6;
+  --color-caution-line: #eed9a8;
 
   --color-blocked: #b42318;
-  --color-blocked-soft: #fdf0ef;
-  --color-blocked-line: #f5c9c4;
+  --color-blocked-soft: #fdf0ee;
+  --color-blocked-line: #f3c4be;
 
   --color-done: #067647;
-  --color-done-soft: #eaf6f0;
-  --color-done-line: #b8e0cb;
+  --color-done-soft: #e7f5ef;
+  --color-done-line: #aedcc6;
 
-  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Inter, Roboto, Helvetica, Arial, sans-serif;
+  /* One elevation scale, tinted with the ink hue rather than pure black, so
+     shadows never look grey-on-grey. */
+  --shadow-xs: 0 1px 2px 0 rgb(16 24 40 / 0.04);
+  --shadow-sm: 0 1px 2px 0 rgb(16 24 40 / 0.05), 0 1px 3px 0 rgb(16 24 40 / 0.04);
+  --shadow-md: 0 2px 4px -2px rgb(16 24 40 / 0.06), 0 4px 8px -2px rgb(16 24 40 / 0.07);
+  --shadow-lg: 0 4px 6px -2px rgb(16 24 40 / 0.04), 0 12px 16px -4px rgb(16 24 40 / 0.09);
+  --shadow-xl: 0 8px 8px -4px rgb(16 24 40 / 0.03), 0 20px 24px -4px rgb(16 24 40 / 0.1);
+  --shadow-2xl: 0 24px 48px -12px rgb(16 24 40 / 0.22);
+
+  --font-sans: var(--font-inter), ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
 
@@ -42,23 +56,35 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-size: 13px;
   line-height: 1.5;
+  /* Inter needs a touch of negative tracking to hold together at UI sizes. */
+  letter-spacing: -0.006em;
+  font-feature-settings: "cv05" 1, "cv11" 1, "ss01" 1;
 }
 
 /* Client screens run larger and looser than firm screens. */
 .client-scope {
   font-size: 15px;
   line-height: 1.6;
+  letter-spacing: -0.008em;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.018em;
 }
 
 /* Every money value aligns on the decimal. */
 .tnum {
   font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
+  font-feature-settings: "tnum" 1, "cv05" 1;
+  letter-spacing: 0;
 }
 
 ::selection {
@@ -67,19 +93,21 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d7dbe2;
-  border-radius: 8px;
-  border: 3px solid var(--color-canvas);
+  background: #c8cfda;
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c0c6d0;
+  background: #aeb7c6;
+  background-clip: content-box;
 }
 
 button,
@@ -88,12 +116,24 @@ select,
 textarea {
   font: inherit;
   color: inherit;
+  letter-spacing: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-ink-3);
 }
 
 :focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: 3px;
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+/* Column headers across the product share one treatment: small, tracked out,
+   and quiet, so the data below is what the eye lands on. */
+thead th {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Fires when a traceability link lands on a region in the document pane. */

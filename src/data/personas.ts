@@ -29,7 +29,7 @@ export const PERSONAS: Persona[] = [
     role: "preparer",
     roleLabel: "Tax preparer",
     side: "firm",
-    blurb: "Owns 34 returns. Also has a personal 1040 with the firm.",
+    blurb: "Owns 37 returns. Also has a personal 1040 with the firm.",
     // The dual-context case. Marcus is staff and a client of his own firm.
     personalReturnId: "r-0007",
     clientId: "c-reyes",
